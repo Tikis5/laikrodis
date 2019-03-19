@@ -51,11 +51,11 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonLaikmatis = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.Panel();
             this.laikmatis = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -274,6 +274,14 @@
             this.panel1.Size = new System.Drawing.Size(117, 272);
             this.panel1.TabIndex = 22;
             // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
+            this.panelLeft.Location = new System.Drawing.Point(107, 25);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(10, 47);
+            this.panelLeft.TabIndex = 27;
+            // 
             // buttonLaikmatis
             // 
             this.buttonLaikmatis.BackColor = System.Drawing.Color.SlateBlue;
@@ -339,14 +347,6 @@
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
-            // 
-            // panelLeft
-            // 
-            this.panelLeft.BackColor = System.Drawing.Color.Indigo;
-            this.panelLeft.Location = new System.Drawing.Point(107, 25);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(10, 47);
-            this.panelLeft.TabIndex = 27;
             // 
             // laikmatis
             // 

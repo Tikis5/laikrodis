@@ -20,3 +20,14 @@ C:\Users\tikis\source\repos\New repos\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2
 C:\Users\tikis\source\repos\New repos\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.csproj.CoreCompileInputs.cache
 C:\Users\tikis\source\repos\New repos\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.exe
 C:\Users\tikis\source\repos\New repos\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.pdb
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\bin\Debug\Laikrodis2.exe.config
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\bin\Debug\Laikrodis2.exe
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\bin\Debug\Laikrodis2.pdb
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.csprojAssemblyReference.cache
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.Form1.resources
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.Form2.resources
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.Properties.Resources.resources
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.csproj.GenerateResource.cache
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.csproj.CoreCompileInputs.cache
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.exe
+C:\Users\tikis\Source\Repos\laikrodis2\Laikrodis2\Laikrodis2\obj\Debug\Laikrodis2.pdb
