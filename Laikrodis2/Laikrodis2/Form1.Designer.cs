@@ -57,9 +57,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.laikmatis = new System.Windows.Forms.Label();
+            this.panelLaikmatis = new System.Windows.Forms.Panel();
+            this.panelKontrole = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panelLaikmatis.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -131,7 +134,7 @@
             this.buttonStart.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStart.Location = new System.Drawing.Point(142, 155);
+            this.buttonStart.Location = new System.Drawing.Point(25, 146);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 7;
@@ -226,7 +229,7 @@
             // 
             this.buttonStop.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStop.Location = new System.Drawing.Point(223, 155);
+            this.buttonStop.Location = new System.Drawing.Point(106, 146);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 17;
@@ -238,7 +241,7 @@
             // 
             this.buttonReset.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReset.Location = new System.Drawing.Point(183, 184);
+            this.buttonReset.Location = new System.Drawing.Point(66, 175);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 18;
@@ -254,7 +257,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.laikMin);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Location = new System.Drawing.Point(146, 95);
+            this.groupBox2.Location = new System.Drawing.Point(29, 86);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
             this.groupBox2.Size = new System.Drawing.Size(148, 41);
@@ -334,6 +337,7 @@
             this.panel2.Controls.Add(this.buttonExit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.panelKontrole);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label5);
@@ -352,11 +356,31 @@
             // 
             this.laikmatis.AutoSize = true;
             this.laikmatis.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.laikmatis.Location = new System.Drawing.Point(170, 46);
+            this.laikmatis.Location = new System.Drawing.Point(53, 37);
             this.laikmatis.Name = "laikmatis";
             this.laikmatis.Size = new System.Drawing.Size(102, 20);
             this.laikmatis.TabIndex = 27;
             this.laikmatis.Text = "LAIKMATIS";
+            // 
+            // panelLaikmatis
+            // 
+            this.panelLaikmatis.Controls.Add(this.laikmatis);
+            this.panelLaikmatis.Controls.Add(this.groupBox2);
+            this.panelLaikmatis.Controls.Add(this.buttonStart);
+            this.panelLaikmatis.Controls.Add(this.buttonStop);
+            this.panelLaikmatis.Controls.Add(this.buttonReset);
+            this.panelLaikmatis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLaikmatis.Location = new System.Drawing.Point(117, 21);
+            this.panelLaikmatis.Name = "panelLaikmatis";
+            this.panelLaikmatis.Size = new System.Drawing.Size(205, 272);
+            this.panelLaikmatis.TabIndex = 28;
+            // 
+            // panelKontrole
+            // 
+            this.panelKontrole.Location = new System.Drawing.Point(148, 21);
+            this.panelKontrole.Name = "panelKontrole";
+            this.panelKontrole.Size = new System.Drawing.Size(203, 272);
+            this.panelKontrole.TabIndex = 28;
             // 
             // Form1
             // 
@@ -365,13 +389,9 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(322, 293);
-            this.Controls.Add(this.laikmatis);
-            this.Controls.Add(this.buttonStart);
-            this.Controls.Add(this.buttonReset);
+            this.Controls.Add(this.panelLaikmatis);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buttonStop);
-            this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -383,8 +403,9 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panelLaikmatis.ResumeLayout(false);
+            this.panelLaikmatis.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -417,6 +438,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Label laikmatis;
+        private System.Windows.Forms.Panel panelLaikmatis;
+        private System.Windows.Forms.Panel panelKontrole;
     }
 }
 

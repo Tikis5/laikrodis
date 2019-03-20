@@ -72,11 +72,15 @@ namespace Laikrodis2
         {
             panelLeft.Height = buttonLaikmatis.Height;
             panelLeft.Top = buttonLaikmatis.Top;
+            panelLaikmatis.Visible = true;
+            panelKontrole.Visible = false;
         }
         private void buttonKontrole_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonKontrole.Height;
             panelLeft.Top = buttonKontrole.Top;
+            panelLaikmatis.Visible = false;
+            panelKontrole.Visible = true;
         }
         private void buttonPriminimas_Click(object sender, EventArgs e)
         {
