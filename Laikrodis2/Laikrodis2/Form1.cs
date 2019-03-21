@@ -21,12 +21,11 @@ namespace Laikrodis2
         int mov;
         int movX;
         int movY;
-
+        // Pagrindinis laikrodis
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Start();
         }
-        // Pagrindinis laikrodis
         private void timer1_Tick(object sender, EventArgs e)
         {
             sek = DateTime.Now.Second;
@@ -49,7 +48,7 @@ namespace Laikrodis2
                 this.WindowState = FormWindowState.Minimized;
             }
         }
-        //Lango kilinojimas
+        //Programos kilinojimas
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             mov = 1;
@@ -67,13 +66,14 @@ namespace Laikrodis2
         {
             mov = 0;
         }
-        //Stulpelis prie mygtuku
+        //Stulpelis prie mygtuku ir tabu rodymas
         private void buttonLaikmatis_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonLaikmatis.Height;
             panelLeft.Top = buttonLaikmatis.Top;
             panelLaikmatis.Visible = true;
             panelKontrole.Visible = false;
+            panelPriminimas.Visible = false;
         }
         private void buttonKontrole_Click(object sender, EventArgs e)
         {
@@ -81,13 +81,16 @@ namespace Laikrodis2
             panelLeft.Top = buttonKontrole.Top;
             panelLaikmatis.Visible = false;
             panelKontrole.Visible = true;
+            panelPriminimas.Visible = false;
         }
         private void buttonPriminimas_Click(object sender, EventArgs e)
         {
             panelLeft.Height = buttonPriminimas.Height;
             panelLeft.Top = buttonPriminimas.Top;
+            panelLaikmatis.Visible = false;
+            panelKontrole.Visible = false;
+            panelPriminimas.Visible = true;
         }
-
         //Laikmacio skaiciavimas
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -106,10 +109,15 @@ namespace Laikrodis2
                 }
             }
         }
+
+        
+
+        //Pauze
         private void buttonStop_Click(object sender, EventArgs e)
         {
             timer2.Stop();
         }
+        //Resetinimas
         private void buttonReset_Click(object sender, EventArgs e)
         {
             sekunde = 0;
@@ -120,13 +128,58 @@ namespace Laikrodis2
             laikSek.Text = sekunde.ToString("00");
             timer2.Stop();
         }
+        //startas
         private void buttonStart_Click(object sender, EventArgs e)
         {
             timer2.Enabled = true;
             timer2.Start();
         }
+        //Kontroles tabas
+        int kontrolesSekunde;
+        private void textBoxKontroleValanda_TextChanged(object sender, EventArgs e)
+        {
+            //kontrolesSekunde = textBoxKontroleValanda.Text.ToString();
+            //kontrolesSekunde = (Convert.ToDateTime.(textBoxKontroleValanda));
+        }
+        private void textBoxKontroleMinute_TextChanged(object sender, EventArgs e)
+        {
 
-        
-        
+        }
+        private void textBoxKontroleSekunde_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //padaryti kad veiktu laikas atgal is ivesto teksto.
+        private void timerKontrole_Tick(object sender, EventArgs e)
+        {
+            kontrolesSekunde--;
+            kontrVal.Text = valanda.ToString("00");
+            kontrMin.Text = minute.ToString("00");
+            kontrSek.Text = kontrolesSekunde.ToString("00");
+            if (kontrolesSekunde <= 0)
+            {
+                kontrolesSekunde = 60;
+                minute--;
+                if (minute == -1)
+                {
+                    minute = 59;
+                    valanda--;
+                    if (valanda == 0 && minute == 0 && sekunde == 0)
+                    {
+                        timerKontrole.Stop();
+                    }
+                }
+            }
+        }
+        private void buttonKontrStart_Click(object sender, EventArgs e)
+        {
+            timerKontrole.Enabled = true;
+            timerKontrole.Start();
+        }
+        private void buttonKontrStop_Click(object sender, EventArgs e)
+        {
+            timerKontrole.Stop();
+        }
+
     }
 }
