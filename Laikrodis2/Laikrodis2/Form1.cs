@@ -18,9 +18,11 @@ namespace Laikrodis2
         }
         int val, min, sek;
         int valanda, minute, sekunde;
-        int mov;
-        int movX;
-        int movY;
+        int mov, movX, movY;
+        int kontrolesSekunde = 0;
+        int kontrolesMinute = 0;
+        int kontrolesValanda = 0;
+
         // Pagrindinis laikrodis
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -109,13 +111,14 @@ namespace Laikrodis2
                 }
             }
         }
-
-        
-
         //Pauze
         private void buttonStop_Click(object sender, EventArgs e)
         {
             timer2.Stop();
+        }
+        private void textBoxKontroleSekunde_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //Resetinimas
         private void buttonReset_Click(object sender, EventArgs e)
@@ -134,47 +137,48 @@ namespace Laikrodis2
             timer2.Enabled = true;
             timer2.Start();
         }
-        //Kontroles tabas
-        int kontrolesSekunde;
+
         private void textBoxKontroleValanda_TextChanged(object sender, EventArgs e)
         {
-            //kontrolesSekunde = textBoxKontroleValanda.Text.ToString();
-            //kontrolesSekunde = (Convert.ToDateTime.(textBoxKontroleValanda));
         }
-        private void textBoxKontroleMinute_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-        private void textBoxKontroleSekunde_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        //padaryti kad veiktu laikas atgal is ivesto teksto.
+        //Kontroles tabas
         private void timerKontrole_Tick(object sender, EventArgs e)
         {
-            kontrolesSekunde--;
-            kontrVal.Text = valanda.ToString("00");
-            kontrMin.Text = minute.ToString("00");
-            kontrSek.Text = kontrolesSekunde.ToString("00");
-            if (kontrolesSekunde <= 0)
-            {
-                kontrolesSekunde = 60;
-                minute--;
-                if (minute == -1)
+                kontrolesSekunde--;
+                kontrVal.Text = kontrolesValanda.ToString("00");
+                kontrMin.Text = kontrolesMinute.ToString("00");
+                kontrSek.Text = kontrolesSekunde.ToString("00");
+                if (kontrolesSekunde <= 0)
                 {
-                    minute = 59;
-                    valanda--;
-                    if (valanda == 0 && minute == 0 && sekunde == 0)
+                    kontrolesSekunde = 60;
+                    kontrolesMinute--;
+                    if (kontrolesMinute == -1)
                     {
-                        timerKontrole.Stop();
+                        kontrolesMinute = 59;
+                        kontrolesValanda--;
+                        if (kontrVal.Text == "00" && kontrMin.Text == "00" && kontrSek.Text == "00")
+                        {
+                            timerKontrole.Stop();
+                            MessageBox.Show("Laikas miegoti!");
+                        }
                     }
                 }
-            }
         }
         private void buttonKontrStart_Click(object sender, EventArgs e)
         {
-            timerKontrole.Enabled = true;
-            timerKontrole.Start();
+            //padaryti kad neveiktu jei nieko neirasyta
+            if (textBoxKontroleSekunde.Text == "" || textBoxKontroleMinute.Text == "" || textBoxKontroleValanda.Text == "")
+            {
+                timerKontrole.Enabled = false;
+                timerKontrole.Stop();
+            }
+                timerKontrole.Enabled = true;
+                timerKontrole.Start();
+                kontrolesSekunde = Convert.ToInt32(textBoxKontroleSekunde.Text);
+                kontrolesMinute = Convert.ToInt32(textBoxKontroleMinute.Text);
+                kontrolesValanda = Convert.ToInt32(textBoxKontroleValanda.Text);
+            
         }
         private void buttonKontrStop_Click(object sender, EventArgs e)
         {

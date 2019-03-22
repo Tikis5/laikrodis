@@ -57,7 +57,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelKontrole = new System.Windows.Forms.Panel();
-            this.textBoxKontroleSekunde = new System.Windows.Forms.TextBox();
             this.textBoxKontroleMinute = new System.Windows.Forms.TextBox();
             this.textBoxKontroleValanda = new System.Windows.Forms.TextBox();
             this.kontrole = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@
             this.panelPriminimas = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.timerKontrole = new System.Windows.Forms.Timer(this.components);
+            this.textBoxKontroleSekunde = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -292,7 +292,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(117, 487);
+            this.panel1.Size = new System.Drawing.Size(117, 428);
             this.panel1.TabIndex = 22;
             // 
             // panelLeft
@@ -364,7 +364,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(567, 21);
+            this.panel2.Size = new System.Drawing.Size(570, 21);
             this.panel2.TabIndex = 26;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
@@ -379,33 +379,27 @@
             this.panelKontrole.Controls.Add(this.groupBox1);
             this.panelKontrole.Controls.Add(this.buttonKontrStop);
             this.panelKontrole.Controls.Add(this.buttonKontrStart);
-            this.panelKontrole.Location = new System.Drawing.Point(153, 206);
+            this.panelKontrole.Location = new System.Drawing.Point(123, 27);
             this.panelKontrole.Name = "panelKontrole";
             this.panelKontrole.Size = new System.Drawing.Size(203, 272);
             this.panelKontrole.TabIndex = 28;
             this.panelKontrole.Visible = false;
             // 
-            // textBoxKontroleSekunde
-            // 
-            this.textBoxKontroleSekunde.Location = new System.Drawing.Point(141, 84);
-            this.textBoxKontroleSekunde.Name = "textBoxKontroleSekunde";
-            this.textBoxKontroleSekunde.Size = new System.Drawing.Size(32, 20);
-            this.textBoxKontroleSekunde.TabIndex = 31;
-            // 
             // textBoxKontroleMinute
             // 
-            this.textBoxKontroleMinute.Location = new System.Drawing.Point(88, 84);
+            this.textBoxKontroleMinute.Location = new System.Drawing.Point(89, 84);
             this.textBoxKontroleMinute.Name = "textBoxKontroleMinute";
             this.textBoxKontroleMinute.Size = new System.Drawing.Size(32, 20);
-            this.textBoxKontroleMinute.TabIndex = 30;
+            this.textBoxKontroleMinute.TabIndex = 33;
+            this.textBoxKontroleMinute.Text = "00";
             // 
             // textBoxKontroleValanda
             // 
-            this.textBoxKontroleValanda.Location = new System.Drawing.Point(33, 84);
+            this.textBoxKontroleValanda.Location = new System.Drawing.Point(51, 84);
             this.textBoxKontroleValanda.Name = "textBoxKontroleValanda";
             this.textBoxKontroleValanda.Size = new System.Drawing.Size(32, 20);
-            this.textBoxKontroleValanda.TabIndex = 29;
-            this.textBoxKontroleValanda.TextChanged += new System.EventHandler(this.textBoxKontroleValanda_TextChanged);
+            this.textBoxKontroleValanda.TabIndex = 32;
+            this.textBoxKontroleValanda.Text = "00";
             // 
             // kontrole
             // 
@@ -529,7 +523,7 @@
             // panelPriminimas
             // 
             this.panelPriminimas.Controls.Add(this.button1);
-            this.panelPriminimas.Location = new System.Drawing.Point(362, 419);
+            this.panelPriminimas.Location = new System.Drawing.Point(340, 250);
             this.panelPriminimas.Name = "panelPriminimas";
             this.panelPriminimas.Size = new System.Drawing.Size(202, 272);
             this.panelPriminimas.TabIndex = 29;
@@ -549,13 +543,21 @@
             this.timerKontrole.Interval = 1000;
             this.timerKontrole.Tick += new System.EventHandler(this.timerKontrole_Tick);
             // 
+            // textBoxKontroleSekunde
+            // 
+            this.textBoxKontroleSekunde.Location = new System.Drawing.Point(127, 84);
+            this.textBoxKontroleSekunde.Name = "textBoxKontroleSekunde";
+            this.textBoxKontroleSekunde.Size = new System.Drawing.Size(32, 20);
+            this.textBoxKontroleSekunde.TabIndex = 35;
+            this.textBoxKontroleSekunde.Text = "00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(567, 508);
+            this.ClientSize = new System.Drawing.Size(570, 449);
             this.Controls.Add(this.panelPriminimas);
             this.Controls.Add(this.panelKontrole);
             this.Controls.Add(this.panelLaikmatis);
@@ -626,9 +628,9 @@
         private System.Windows.Forms.Button buttonKontrStart;
         private System.Windows.Forms.Label laikmatis;
         private System.Windows.Forms.Button buttonLaikmatis;
-        private System.Windows.Forms.TextBox textBoxKontroleSekunde;
         private System.Windows.Forms.TextBox textBoxKontroleMinute;
         public System.Windows.Forms.TextBox textBoxKontroleValanda;
+        private System.Windows.Forms.TextBox textBoxKontroleSekunde;
     }
 }
 
