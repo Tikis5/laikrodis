@@ -161,6 +161,9 @@ namespace Laikrodis2
                         {
                             timerKontrole.Stop();
                             MessageBox.Show("Laikas miegoti!");
+                            textBoxKontroleValanda.Enabled = true;
+                            textBoxKontroleMinute.Enabled = true;
+                            textBoxKontroleSekunde.Enabled = true;
                         }
                     }
                 }
@@ -170,19 +173,26 @@ namespace Laikrodis2
             //padaryti kad neveiktu jei nieko neirasyta
             if (textBoxKontroleSekunde.Text == "" || textBoxKontroleMinute.Text == "" || textBoxKontroleValanda.Text == "")
             {
-                timerKontrole.Enabled = false;
-                timerKontrole.Stop();
+                MessageBox.Show("Ivedete neteisinga laika");
             }
-                timerKontrole.Enabled = true;
-                timerKontrole.Start();
+            else
+            {
                 kontrolesSekunde = Convert.ToInt32(textBoxKontroleSekunde.Text);
                 kontrolesMinute = Convert.ToInt32(textBoxKontroleMinute.Text);
                 kontrolesValanda = Convert.ToInt32(textBoxKontroleValanda.Text);
-            
+                textBoxKontroleValanda.Enabled = false;
+                textBoxKontroleMinute.Enabled = false;
+                textBoxKontroleSekunde.Enabled = false;
+                timerKontrole.Enabled = true;
+                timerKontrole.Start();
+            }
         }
         private void buttonKontrStop_Click(object sender, EventArgs e)
         {
             timerKontrole.Stop();
+            textBoxKontroleValanda.Enabled = true;
+            textBoxKontroleMinute.Enabled = true;
+            textBoxKontroleSekunde.Enabled = true;
         }
 
     }
