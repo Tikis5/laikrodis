@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Media;
 
 namespace Laikrodis2
 {
@@ -16,9 +17,19 @@ namespace Laikrodis2
         int val, min, sek;
         int valanda, minute, sekunde;
         int mov, movX, movY;
+
         int kontrolesSekunde = 0;
         int kontrolesMinute = 0;
         int kontrolesValanda = 0;
+
+        int darboLaik = 0;
+        int trumposLaik = 0;
+        int ilgosLaik = 0;
+        int intervalas = 0;
+        int dabartinisPomo = 0;
+        int pomoMin = 0;
+        int pomoSek = 0;
+        SoundPlayer chime = new SoundPlayer(@"C:\Users\tikis\source\repos\NewRepo\Laikrodis2\Laikrodis2\chime.wav");
         //Kompiuterio uzrakinimas
         [DllImport("user32")]
         public static extern void LockWorkStation();
@@ -124,6 +135,11 @@ namespace Laikrodis2
         {
 
         }
+
+        private void panelPriminimas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         //Resetinimas
         private void buttonReset_Click(object sender, EventArgs e)
         {
@@ -141,10 +157,11 @@ namespace Laikrodis2
             timer2.Enabled = true;
             timer2.Start();
         }
-
         private void textBoxKontroleValanda_TextChanged(object sender, EventArgs e)
         {
         }
+
+        
 
         //Kontroles tabas
         private void timerKontrole_Tick(object sender, EventArgs e)
@@ -203,6 +220,100 @@ namespace Laikrodis2
             textBoxKontroleMinute.Enabled = true;
             textBoxKontroleSekunde.Enabled = true;
         }
+        //Pomodoro techinka
+        private void timerPomodoro_Tick(object sender, EventArgs e)
+        {
+            pomoSek++;
+            labelPomoMin.Text = pomoMin.ToString("00");
+            labelPomoSek.Text = pomoSek.ToString("00");
+            pomodoroNurodymas.Text = "Dirbk: " + darboLaik.ToString() + "min.";
+            if (pomoSek >= 10)
+            {
+                pomoSek = 0;
+                pomoMin++;
+                if (pomoMin >= darboLaik)
+                {
+                    pomoSek = 0;
+                    pomoMin = 0;
+                    labelPomoMin.Text = pomoMin.ToString("00");
+                    labelPomoSek.Text = pomoSek.ToString("00");
+                    intervalas--;
+                    chime.Play();
+                    if (intervalas > -1)
+                    {
+                        timerPomodoro.Stop();
+                        timerTrumpa.Start();
+                    }
+                }
+            }
+            if (intervalas == -1)
+            {
+                pomodoroNurodymas.Text = "Ilsekis: " + ilgosLaik.ToString() + "min.";
+                if (pomoSek >= 59)
+                {
+                    pomoSek = -1;
+                    pomoMin++;
+                    if (pomoMin >= ilgosLaik)
+                    {
+                        
+                        pomoSek = 0;
+                        pomoMin = 0;
+                        intervalas = Convert.ToInt32(textBoxIntervalas.Text);
+                        labelPomoMin.Text = pomoMin.ToString("00");
+                        labelPomoSek.Text = pomoSek.ToString("00");
+                        chime.Play();
+                    }
+                }
+            }
+        }
+        private void timerTrumpa_Tick(object sender, EventArgs e)
+        {
+            if (intervalas > -1)
+            {
+                pomoSek++;
+                labelPomoMin.Text = pomoMin.ToString("00");
+                labelPomoSek.Text = pomoSek.ToString("00");
 
+                pomodoroNurodymas.Text = "Ilsekis: " + trumposLaik.ToString() + "min.";
+                if (pomoSek >= 59)
+                {
+                    pomoSek = -1;
+                    pomoMin++;
+                    if (pomoMin >= trumposLaik)
+                    {
+                        pomoSek = 0;
+                        pomoMin = 0;
+                        labelPomoMin.Text = pomoMin.ToString("00");
+                        labelPomoSek.Text = pomoSek.ToString("00");
+                        chime.Play();
+                        timerTrumpa.Stop();
+                        timerPomodoro.Start();
+                    }
+                }
+            }
+            else
+            {
+                timerTrumpa.Stop();
+                timerPomodoro.Start();
+            }
+        }
+        private void buttonPomodoroStart_Click(object sender, EventArgs e)
+        {
+            darboLaik = Convert.ToInt32(textBoxDarboLaik.Text);
+            trumposLaik = Convert.ToInt32(textBoxTrumposLaik.Text);
+            ilgosLaik = Convert.ToInt32(textBoxIlgosLaik.Text);
+            intervalas = Convert.ToInt32(textBoxIntervalas.Text);
+            timerPomodoro.Enabled = true;
+            timerPomodoro.Start();
+        }
+        private void buttonPomodoroStop_Click(object sender, EventArgs e)
+        {
+            pomoSek = 0;
+            pomoMin = 0;
+            labelPomoMin.Text = pomoMin.ToString("00");
+            labelPomoSek.Text = pomoSek.ToString("00");
+            timerPomodoro.Stop();
+            timerTrumpa.Stop();
+        }
     }
 }

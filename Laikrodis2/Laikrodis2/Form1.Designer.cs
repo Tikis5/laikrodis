@@ -57,6 +57,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelKontrole = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.textBoxKontroleSekunde = new System.Windows.Forms.TextBox();
             this.textBoxKontroleMinute = new System.Windows.Forms.TextBox();
             this.textBoxKontroleValanda = new System.Windows.Forms.TextBox();
@@ -69,15 +70,35 @@
             this.kontrMin = new System.Windows.Forms.Label();
             this.buttonKontrStop = new System.Windows.Forms.Button();
             this.buttonKontrStart = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panelLaikmatis = new System.Windows.Forms.Panel();
             this.laikmatis = new System.Windows.Forms.Label();
             this.panelPriminimas = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pomodoroNurodymas = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBoxIntervalas = new System.Windows.Forms.TextBox();
+            this.textBoxIlgosLaik = new System.Windows.Forms.TextBox();
+            this.textBoxTrumposLaik = new System.Windows.Forms.TextBox();
+            this.textBoxDarboLaik = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelPomoSek = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.labelPomoMin = new System.Windows.Forms.Label();
+            this.buttonPomodoroStop = new System.Windows.Forms.Button();
+            this.buttonPomodoroStart = new System.Windows.Forms.Button();
             this.timerKontrole = new System.Windows.Forms.Timer(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.timerPomodoro = new System.Windows.Forms.Timer(this.components);
+            this.timerTrumpa = new System.Windows.Forms.Timer(this.components);
+            this.timerIlga = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -85,6 +106,7 @@
             this.groupBox1.SuspendLayout();
             this.panelLaikmatis.SuspendLayout();
             this.panelPriminimas.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -188,7 +210,7 @@
             this.buttonPriminimas.Name = "buttonPriminimas";
             this.buttonPriminimas.Size = new System.Drawing.Size(117, 47);
             this.buttonPriminimas.TabIndex = 9;
-            this.buttonPriminimas.Text = "Priminimas";
+            this.buttonPriminimas.Text = "Pomodoro";
             this.buttonPriminimas.UseVisualStyleBackColor = false;
             this.buttonPriminimas.Click += new System.EventHandler(this.buttonPriminimas_Click);
             // 
@@ -393,6 +415,16 @@
             this.panelKontrole.TabIndex = 28;
             this.panelKontrole.Visible = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(60, 88);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(86, 16);
+            this.label14.TabIndex = 39;
+            this.label14.Text = "Iveskite laika";
+            // 
             // textBoxKontroleSekunde
             // 
             this.textBoxKontroleSekunde.Location = new System.Drawing.Point(151, 117);
@@ -421,7 +453,7 @@
             // 
             this.kontrole.AutoSize = true;
             this.kontrole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kontrole.Location = new System.Drawing.Point(53, 36);
+            this.kontrole.Location = new System.Drawing.Point(53, 37);
             this.kontrole.Name = "kontrole";
             this.kontrole.Size = new System.Drawing.Size(103, 20);
             this.kontrole.TabIndex = 28;
@@ -514,6 +546,33 @@
             this.buttonKontrStart.UseVisualStyleBackColor = true;
             this.buttonKontrStart.Click += new System.EventHandler(this.buttonKontrStart_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(78, 120);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Min.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 120);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Val.";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(125, 120);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 13);
+            this.label13.TabIndex = 38;
+            this.label13.Text = "Sek.";
+            // 
             // panelLaikmatis
             // 
             this.panelLaikmatis.Controls.Add(this.laikmatis);
@@ -538,64 +597,227 @@
             // 
             // panelPriminimas
             // 
-            this.panelPriminimas.Controls.Add(this.button1);
+            this.panelPriminimas.Controls.Add(this.pomodoroNurodymas);
+            this.panelPriminimas.Controls.Add(this.label27);
+            this.panelPriminimas.Controls.Add(this.label26);
+            this.panelPriminimas.Controls.Add(this.label25);
+            this.panelPriminimas.Controls.Add(this.textBoxIntervalas);
+            this.panelPriminimas.Controls.Add(this.textBoxIlgosLaik);
+            this.panelPriminimas.Controls.Add(this.textBoxTrumposLaik);
+            this.panelPriminimas.Controls.Add(this.textBoxDarboLaik);
+            this.panelPriminimas.Controls.Add(this.label24);
+            this.panelPriminimas.Controls.Add(this.label23);
+            this.panelPriminimas.Controls.Add(this.label22);
+            this.panelPriminimas.Controls.Add(this.label21);
+            this.panelPriminimas.Controls.Add(this.label20);
+            this.panelPriminimas.Controls.Add(this.groupBox3);
+            this.panelPriminimas.Controls.Add(this.buttonPomodoroStop);
+            this.panelPriminimas.Controls.Add(this.buttonPomodoroStart);
             this.panelPriminimas.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelPriminimas.Location = new System.Drawing.Point(117, 21);
             this.panelPriminimas.Name = "panelPriminimas";
             this.panelPriminimas.Size = new System.Drawing.Size(202, 272);
             this.panelPriminimas.TabIndex = 29;
             this.panelPriminimas.Visible = false;
+            this.panelPriminimas.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPriminimas_Paint);
             // 
-            // button1
+            // pomodoroNurodymas
             // 
-            this.button1.Location = new System.Drawing.Point(70, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.pomodoroNurodymas.AutoSize = true;
+            this.pomodoroNurodymas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pomodoroNurodymas.Location = new System.Drawing.Point(51, 170);
+            this.pomodoroNurodymas.Name = "pomodoroNurodymas";
+            this.pomodoroNurodymas.Size = new System.Drawing.Size(0, 20);
+            this.pomodoroNurodymas.TabIndex = 40;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(177, 101);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(26, 13);
+            this.label27.TabIndex = 39;
+            this.label27.Text = "min.";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(177, 78);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(26, 13);
+            this.label26.TabIndex = 38;
+            this.label26.Text = "min.";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(177, 53);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(26, 13);
+            this.label25.TabIndex = 37;
+            this.label25.Text = "min.";
+            // 
+            // textBoxIntervalas
+            // 
+            this.textBoxIntervalas.Location = new System.Drawing.Point(147, 127);
+            this.textBoxIntervalas.Name = "textBoxIntervalas";
+            this.textBoxIntervalas.Size = new System.Drawing.Size(28, 20);
+            this.textBoxIntervalas.TabIndex = 36;
+            this.textBoxIntervalas.Text = "4";
+            // 
+            // textBoxIlgosLaik
+            // 
+            this.textBoxIlgosLaik.Location = new System.Drawing.Point(147, 98);
+            this.textBoxIlgosLaik.Name = "textBoxIlgosLaik";
+            this.textBoxIlgosLaik.Size = new System.Drawing.Size(28, 20);
+            this.textBoxIlgosLaik.TabIndex = 35;
+            this.textBoxIlgosLaik.Text = "25";
+            // 
+            // textBoxTrumposLaik
+            // 
+            this.textBoxTrumposLaik.Location = new System.Drawing.Point(147, 74);
+            this.textBoxTrumposLaik.Name = "textBoxTrumposLaik";
+            this.textBoxTrumposLaik.Size = new System.Drawing.Size(28, 20);
+            this.textBoxTrumposLaik.TabIndex = 34;
+            this.textBoxTrumposLaik.Text = "5";
+            // 
+            // textBoxDarboLaik
+            // 
+            this.textBoxDarboLaik.Location = new System.Drawing.Point(147, 50);
+            this.textBoxDarboLaik.Name = "textBoxDarboLaik";
+            this.textBoxDarboLaik.Size = new System.Drawing.Size(28, 20);
+            this.textBoxDarboLaik.TabIndex = 33;
+            this.textBoxDarboLaik.Text = "25";
+            // 
+            // label24
+            // 
+            this.label24.Location = new System.Drawing.Point(28, 125);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(118, 28);
+            this.label24.TabIndex = 32;
+            this.label24.Text = "Trumpu pertauku kiekis iki ilgos pertraukos";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(28, 101);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(72, 13);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "Ilga pertrauka";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(28, 77);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(91, 13);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "Trumpa pertrauka";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(28, 53);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(66, 13);
+            this.label21.TabIndex = 29;
+            this.label21.Text = "Darbo laikas";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(53, 18);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(112, 20);
+            this.label20.TabIndex = 28;
+            this.label20.Text = "POMODORO";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.labelPomoSek);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.labelPomoMin);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox3.Location = new System.Drawing.Point(55, 193);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox3.Size = new System.Drawing.Size(94, 41);
+            this.groupBox3.TabIndex = 22;
+            this.groupBox3.TabStop = false;
+            // 
+            // labelPomoSek
+            // 
+            this.labelPomoSek.AutoSize = true;
+            this.labelPomoSek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPomoSek.Location = new System.Drawing.Point(58, 13);
+            this.labelPomoSek.Name = "labelPomoSek";
+            this.labelPomoSek.Size = new System.Drawing.Size(29, 20);
+            this.labelPomoSek.TabIndex = 16;
+            this.labelPomoSek.Text = "00";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(38, 13);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(14, 20);
+            this.label18.TabIndex = 15;
+            this.label18.Text = ":";
+            // 
+            // labelPomoMin
+            // 
+            this.labelPomoMin.AutoSize = true;
+            this.labelPomoMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPomoMin.Location = new System.Drawing.Point(3, 13);
+            this.labelPomoMin.Name = "labelPomoMin";
+            this.labelPomoMin.Size = new System.Drawing.Size(29, 20);
+            this.labelPomoMin.TabIndex = 14;
+            this.labelPomoMin.Text = "00";
+            // 
+            // buttonPomodoroStop
+            // 
+            this.buttonPomodoroStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPomodoroStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPomodoroStop.Location = new System.Drawing.Point(105, 240);
+            this.buttonPomodoroStop.Name = "buttonPomodoroStop";
+            this.buttonPomodoroStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonPomodoroStop.TabIndex = 1;
+            this.buttonPomodoroStop.Text = "STOP/RESET";
+            this.buttonPomodoroStop.UseVisualStyleBackColor = true;
+            this.buttonPomodoroStop.Click += new System.EventHandler(this.buttonPomodoroStop_Click);
+            // 
+            // buttonPomodoroStart
+            // 
+            this.buttonPomodoroStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPomodoroStart.Location = new System.Drawing.Point(24, 240);
+            this.buttonPomodoroStart.Name = "buttonPomodoroStart";
+            this.buttonPomodoroStart.Size = new System.Drawing.Size(75, 23);
+            this.buttonPomodoroStart.TabIndex = 0;
+            this.buttonPomodoroStart.Text = "START";
+            this.buttonPomodoroStart.UseVisualStyleBackColor = true;
+            this.buttonPomodoroStart.Click += new System.EventHandler(this.buttonPomodoroStart_Click);
             // 
             // timerKontrole
             // 
             this.timerKontrole.Interval = 1000;
             this.timerKontrole.Tick += new System.EventHandler(this.timerKontrole_Tick);
             // 
-            // label7
+            // timerPomodoro
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 13);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Val.";
+            this.timerPomodoro.Interval = 1000;
+            this.timerPomodoro.Tick += new System.EventHandler(this.timerPomodoro_Tick);
             // 
-            // label8
+            // timerTrumpa
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(78, 120);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 37;
-            this.label8.Text = "Min.";
+            this.timerTrumpa.Interval = 1000;
+            this.timerTrumpa.Tick += new System.EventHandler(this.timerTrumpa_Tick);
             // 
-            // label13
+            // timerIlga
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(125, 120);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 13);
-            this.label13.TabIndex = 38;
-            this.label13.Text = "Sek.";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(60, 88);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 16);
-            this.label14.TabIndex = 39;
-            this.label14.Text = "Iveskite laika";
+            this.timerIlga.Interval = 1000;
             // 
             // Form1
             // 
@@ -628,6 +850,9 @@
             this.panelLaikmatis.ResumeLayout(false);
             this.panelLaikmatis.PerformLayout();
             this.panelPriminimas.ResumeLayout(false);
+            this.panelPriminimas.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -662,7 +887,7 @@
         private System.Windows.Forms.Panel panelLaikmatis;
         private System.Windows.Forms.Panel panelKontrole;
         private System.Windows.Forms.Panel panelPriminimas;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPomodoroStart;
         private System.Windows.Forms.Timer timerKontrole;
         private System.Windows.Forms.Label kontrole;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -682,6 +907,27 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button buttonPomodoroStop;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label labelPomoSek;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label labelPomoMin;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBoxIntervalas;
+        private System.Windows.Forms.TextBox textBoxIlgosLaik;
+        private System.Windows.Forms.TextBox textBoxTrumposLaik;
+        private System.Windows.Forms.TextBox textBoxDarboLaik;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Timer timerPomodoro;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label pomodoroNurodymas;
+        private System.Windows.Forms.Timer timerTrumpa;
+        private System.Windows.Forms.Timer timerIlga;
     }
 }
 
