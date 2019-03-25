@@ -7,22 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Laikrodis2
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
         int val, min, sek;
         int valanda, minute, sekunde;
         int mov, movX, movY;
         int kontrolesSekunde = 0;
         int kontrolesMinute = 0;
         int kontrolesValanda = 0;
+        //Kompiuterio uzrakinimas
+        [DllImport("user32")]
+        public static extern void LockWorkStation();
 
+        public Form1()
+        {
+            InitializeComponent();
+        }
         // Pagrindinis laikrodis
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -153,27 +157,32 @@ namespace Laikrodis2
                 {
                     kontrolesSekunde = 60;
                     kontrolesMinute--;
-                    if (kontrolesMinute == -1)
+                    if (kontrolesMinute < 0)
                     {
                         kontrolesMinute = 59;
                         kontrolesValanda--;
                         if (kontrVal.Text == "00" && kontrMin.Text == "00" && kontrSek.Text == "00")
                         {
                             timerKontrole.Stop();
-                            MessageBox.Show("Laikas miegoti!");
+                            MessageBox.Show("Laikas miegoti! \nPaspaudus mygtuka OK kompiuteris uzsirakins!",
+                                "Ispejimas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                             textBoxKontroleValanda.Enabled = true;
                             textBoxKontroleMinute.Enabled = true;
                             textBoxKontroleSekunde.Enabled = true;
+                            //LockWorkStation();
                         }
                     }
                 }
         }
         private void buttonKontrStart_Click(object sender, EventArgs e)
         {
-            //padaryti kad neveiktu jei nieko neirasyta
             if (textBoxKontroleSekunde.Text == "" || textBoxKontroleMinute.Text == "" || textBoxKontroleValanda.Text == "")
             {
                 MessageBox.Show("Ivedete neteisinga laika");
+            }
+            else if (textBoxKontroleSekunde.Text == "00" && textBoxKontroleMinute.Text == "00" && textBoxKontroleValanda.Text == "00")
+            {
+                MessageBox.Show("Iveskite laika");
             }
             else
             {
