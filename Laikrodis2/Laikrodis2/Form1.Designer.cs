@@ -428,26 +428,32 @@
             // textBoxKontroleSekunde
             // 
             this.textBoxKontroleSekunde.Location = new System.Drawing.Point(151, 117);
+            this.textBoxKontroleSekunde.MaxLength = 2;
             this.textBoxKontroleSekunde.Name = "textBoxKontroleSekunde";
             this.textBoxKontroleSekunde.Size = new System.Drawing.Size(21, 20);
             this.textBoxKontroleSekunde.TabIndex = 35;
             this.textBoxKontroleSekunde.Text = "00";
+            this.textBoxKontroleSekunde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxKontroleSekunde_KeyPress);
             // 
             // textBoxKontroleMinute
             // 
             this.textBoxKontroleMinute.Location = new System.Drawing.Point(102, 117);
+            this.textBoxKontroleMinute.MaxLength = 2;
             this.textBoxKontroleMinute.Name = "textBoxKontroleMinute";
             this.textBoxKontroleMinute.Size = new System.Drawing.Size(21, 20);
             this.textBoxKontroleMinute.TabIndex = 33;
             this.textBoxKontroleMinute.Text = "00";
+            this.textBoxKontroleMinute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxKontroleMinute_KeyPress);
             // 
             // textBoxKontroleValanda
             // 
             this.textBoxKontroleValanda.Location = new System.Drawing.Point(55, 117);
+            this.textBoxKontroleValanda.MaxLength = 2;
             this.textBoxKontroleValanda.Name = "textBoxKontroleValanda";
             this.textBoxKontroleValanda.Size = new System.Drawing.Size(21, 20);
             this.textBoxKontroleValanda.TabIndex = 32;
             this.textBoxKontroleValanda.Text = "00";
+            this.textBoxKontroleValanda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxKontroleValanda_KeyPress);
             // 
             // kontrole
             // 
@@ -818,6 +824,7 @@
             // timerIlga
             // 
             this.timerIlga.Interval = 1000;
+            this.timerIlga.Tick += new System.EventHandler(this.timerIlga_Tick);
             // 
             // Form1
             // 
@@ -828,9 +835,9 @@
             this.ClientSize = new System.Drawing.Size(322, 295);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelKontrole);
             this.Controls.Add(this.panelPriminimas);
             this.Controls.Add(this.panelLaikmatis);
-            this.Controls.Add(this.panelKontrole);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

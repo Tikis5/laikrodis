@@ -26,7 +26,6 @@ namespace Laikrodis2
         int trumposLaik = 0;
         int ilgosLaik = 0;
         int intervalas = 0;
-        int dabartinisPomo = 0;
         int pomoMin = 0;
         int pomoSek = 0;
         SoundPlayer chime = new SoundPlayer(@"C:\Users\tikis\source\repos\NewRepo\Laikrodis2\Laikrodis2\chime.wav");
@@ -111,15 +110,15 @@ namespace Laikrodis2
         //Laikmacio skaiciavimas
         private void timer2_Tick(object sender, EventArgs e)
         {
-            sekunde++;
             laikVal.Text = valanda.ToString("00");
             laikMin.Text = minute.ToString("00");
             laikSek.Text = sekunde.ToString("00");
-            if (sekunde >= 59)
+            sekunde++;
+            if (sekunde > 59)
             {
-                sekunde = -1;
+                sekunde = 0;
                 minute++;
-                 if (minute == 60)
+                if (minute > 59)
                 {
                     minute = 0;
                     valanda++;
@@ -166,30 +165,52 @@ namespace Laikrodis2
         //Kontroles tabas
         private void timerKontrole_Tick(object sender, EventArgs e)
         {
-                kontrolesSekunde--;
-                kontrVal.Text = kontrolesValanda.ToString("00");
-                kontrMin.Text = kontrolesMinute.ToString("00");
-                kontrSek.Text = kontrolesSekunde.ToString("00");
-                if (kontrolesSekunde <= 0)
+            if ((kontrolesMinute == 0) && (kontrolesValanda == 0) && (kontrolesSekunde == 0))
+            {
+                timerKontrole.Stop();
+                MessageBox.Show("Laikas miegoti! \nPaspaudus mygtuka OK kompiuteris uzsirakins!",
+                    "Ispejimas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                textBoxKontroleValanda.Enabled = true;
+                textBoxKontroleMinute.Enabled = true;
+                textBoxKontroleSekunde.Enabled = true;
+                kontrVal.Text = "00";
+                kontrMin.Text = "00";
+                kontrSek.Text = "00";
+
+                //LockWorkStation();
+            }
+            else
+            {
+                if (kontrolesSekunde < 1)
                 {
-                    kontrolesSekunde = 60;
-                    kontrolesMinute--;
-                    if (kontrolesMinute < 0)
+                    kontrolesSekunde = 59;
+                    if (kontrolesMinute < 1)
                     {
                         kontrolesMinute = 59;
-                        kontrolesValanda--;
-                        if (kontrVal.Text == "00" && kontrMin.Text == "00" && kontrSek.Text == "00")
+                        if (kontrolesValanda != 0)
                         {
-                            timerKontrole.Stop();
-                            MessageBox.Show("Laikas miegoti! \nPaspaudus mygtuka OK kompiuteris uzsirakins!",
-                                "Ispejimas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                            textBoxKontroleValanda.Enabled = true;
-                            textBoxKontroleMinute.Enabled = true;
-                            textBoxKontroleSekunde.Enabled = true;
-                            //LockWorkStation();
+                            kontrolesValanda--;
                         }
                     }
+                    else kontrolesMinute--;
                 }
+                else kontrolesSekunde--;
+                if (kontrolesValanda > 9)
+                {
+                    kontrVal.Text = kontrolesValanda.ToString();
+                }
+                else kontrVal.Text = "0" + kontrolesValanda.ToString();
+                if (kontrolesMinute > 9)
+                {
+                    kontrMin.Text = kontrolesMinute.ToString();
+                }
+                else kontrMin.Text = "0" + kontrolesMinute.ToString();
+                if (kontrolesSekunde > 9)
+                {
+                    kontrSek.Text = kontrolesSekunde.ToString();
+                }
+                else kontrSek.Text = "0" + kontrolesSekunde.ToString();
+            }
         }
         private void buttonKontrStart_Click(object sender, EventArgs e)
         {
@@ -201,6 +222,7 @@ namespace Laikrodis2
             {
                 MessageBox.Show("Iveskite laika");
             }
+            
             else
             {
                 kontrolesSekunde = Convert.ToInt32(textBoxKontroleSekunde.Text);
@@ -211,8 +233,43 @@ namespace Laikrodis2
                 textBoxKontroleSekunde.Enabled = false;
                 timerKontrole.Enabled = true;
                 timerKontrole.Start();
+                
+            }
+            if ((kontrolesMinute < 0) || (kontrolesMinute > 60) || (kontrolesValanda < 0) || (kontrolesSekunde > 60))
+            {
+                timerKontrole.Stop();
+                MessageBox.Show("Ivedete neteisinga laika");
+                textBoxKontroleValanda.Enabled = true;
+                textBoxKontroleMinute.Enabled = true;
+                textBoxKontroleSekunde.Enabled = true;
             }
         }
+        //kontroles laiko ivedimo validacija
+        private void textBoxKontroleSekunde_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxKontroleMinute_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxKontroleValanda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void buttonKontrStop_Click(object sender, EventArgs e)
         {
             timerKontrole.Stop();
@@ -227,7 +284,7 @@ namespace Laikrodis2
             labelPomoMin.Text = pomoMin.ToString("00");
             labelPomoSek.Text = pomoSek.ToString("00");
             pomodoroNurodymas.Text = "Dirbk: " + darboLaik.ToString() + "min.";
-            if (pomoSek >= 10)
+            if (pomoSek > 59)
             {
                 pomoSek = 0;
                 pomoMin++;
@@ -239,47 +296,32 @@ namespace Laikrodis2
                     labelPomoSek.Text = pomoSek.ToString("00");
                     intervalas--;
                     chime.Play();
-                    if (intervalas > -1)
+                    if (intervalas >= 0)
                     {
                         timerPomodoro.Stop();
                         timerTrumpa.Start();
                     }
-                }
-            }
-            if (intervalas == -1)
-            {
-                pomodoroNurodymas.Text = "Ilsekis: " + ilgosLaik.ToString() + "min.";
-                if (pomoSek >= 59)
-                {
-                    pomoSek = -1;
-                    pomoMin++;
-                    if (pomoMin >= ilgosLaik)
+                    else
                     {
-                        
-                        pomoSek = 0;
-                        pomoMin = 0;
-                        intervalas = Convert.ToInt32(textBoxIntervalas.Text);
-                        labelPomoMin.Text = pomoMin.ToString("00");
-                        labelPomoSek.Text = pomoSek.ToString("00");
-                        chime.Play();
+                        timerPomodoro.Stop();
+                        timerIlga.Start();
                     }
                 }
             }
         }
         private void timerTrumpa_Tick(object sender, EventArgs e)
         {
-            if (intervalas > -1)
+            if (intervalas >= 0)
             {
                 pomoSek++;
                 labelPomoMin.Text = pomoMin.ToString("00");
                 labelPomoSek.Text = pomoSek.ToString("00");
-
                 pomodoroNurodymas.Text = "Ilsekis: " + trumposLaik.ToString() + "min.";
-                if (pomoSek >= 59)
+                if (pomoSek > 59)
                 {
-                    pomoSek = -1;
+                    pomoSek = 0;
                     pomoMin++;
-                    if (pomoMin >= trumposLaik)
+                    if (pomoMin == trumposLaik)
                     {
                         pomoSek = 0;
                         pomoMin = 0;
@@ -294,6 +336,32 @@ namespace Laikrodis2
             else
             {
                 timerTrumpa.Stop();
+                timerPomodoro.Start();
+            }
+        }
+        private void timerIlga_Tick(object sender, EventArgs e)
+        {
+            ilgosLaik = Convert.ToInt32(textBoxIlgosLaik.Text);
+            if (intervalas < 0)
+            {
+                pomodoroNurodymas.Text = "Ilsekis: " + ilgosLaik.ToString() + "min.";
+                if (pomoSek > 59)
+                {
+                    pomoSek = 0;
+                    pomoMin++;
+                    if (pomoMin == ilgosLaik)
+                    {
+                        pomoSek = 0;
+                        pomoMin = 0;
+                        labelPomoMin.Text = pomoMin.ToString("00");
+                        labelPomoSek.Text = pomoSek.ToString("00");
+                        chime.Play();
+                    }
+                }
+            }
+            else
+            {
+                timerIlga.Stop();
                 timerPomodoro.Start();
             }
         }
