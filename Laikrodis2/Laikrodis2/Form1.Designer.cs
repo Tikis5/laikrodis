@@ -97,8 +97,7 @@
             this.buttonPomodoroStart = new System.Windows.Forms.Button();
             this.timerKontrole = new System.Windows.Forms.Timer(this.components);
             this.timerPomodoro = new System.Windows.Forms.Timer(this.components);
-            this.timerTrumpa = new System.Windows.Forms.Timer(this.components);
-            this.timerIlga = new System.Windows.Forms.Timer(this.components);
+            this.timerPertrauka = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -818,13 +817,8 @@
             // 
             // timerTrumpa
             // 
-            this.timerTrumpa.Interval = 1000;
-            this.timerTrumpa.Tick += new System.EventHandler(this.timerTrumpa_Tick);
-            // 
-            // timerIlga
-            // 
-            this.timerIlga.Interval = 1000;
-            this.timerIlga.Tick += new System.EventHandler(this.timerIlga_Tick);
+            this.timerPertrauka.Interval = 1000;
+            this.timerPertrauka.Tick += new System.EventHandler(this.timerTrumpa_Tick);
             // 
             // Form1
             // 
@@ -933,8 +927,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label pomodoroNurodymas;
-        private System.Windows.Forms.Timer timerTrumpa;
-        private System.Windows.Forms.Timer timerIlga;
+        private System.Windows.Forms.Timer timerPertrauka;
     }
 }
 
